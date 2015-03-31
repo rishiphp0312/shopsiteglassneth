@@ -1,0 +1,83 @@
+{include file="header.tpl"}
+{include file="js_css_validation.tpl"}
+{include file="header_search.tpl"}
+		<!--End Logo-->
+		<!--Start Middle-->
+		<div id="middleMain">
+			
+				
+				{include file="left_category.tpl"}
+			<!--Start Middle-->
+		<div id="middleMain">
+				<form name="sell-itemform" id="sell-itemform" method="post" >
+				<div id="middleRtMain">
+				<div>
+				<span class="mainHD">Sell an Item </span>
+					<!--start top tab-->
+					<div>
+							{include file='error_msg_template.tpl'}
+
+						<div class="clear"></div>
+					</div>
+					<div>
+						<span class="selItemtabinactive"><a href='{$baseUrl}sell-an-item.php{if $item_id_value!=''}?item_id_value={$item_id_value}{/if}'>Item Details</a> </span>
+						<span class="selItemtabinactive" ><a href='{$baseUrl}upload_imgage.php{if $item_id_value!=''}?item_id_value={$item_id_value}{/if}'>Upload Images</a> </span>
+						<span class="selItemtabative"><a href='#{$baseUrl}review-post.php'>Review &amp; Post</a> </span>
+						<div class="clear"></div>
+					</div>
+					<!--End top tab-->
+					<!--Start inside part -->
+					<div class="sellItemmian">
+						<div class="sellLabletext"><span>Title</span><br />
+						A short, descriptive title works best.</div>
+						
+						<div class="selllablefield">
+						<input name="title" id='title' type="text" value="{$title_value}" size=""class="required login_input"/>
+						</div>
+						<div class="sellLabletext"><span>Description</span><br />
+						Start with the most important information and provide enough
+detail for shoppers to feel comfortable buying.
+						</div>
+						<div class="selllablefield"><textarea name="description" cols="30" 
+						rows="5" class="textfield">{$description_value}</textarea></div>
+						<div class="sellLabletext"><span>Materials</span><br />
+						List the materials used in your item, separating each with a comma.
+						</div>
+						<div class="selllablefield"><textarea name="materials"
+						cols="" rows="" class="textfield">{$material_used_value}</textarea></div>
+						<div class="sellLabletext"><span>Category</span><br />
+						Choose a top-level Category</div>
+						<div class="selllablefield">
+						 <select name="category_id" class="required input">
+				  {html_options values=$parentID output=$parentNAME selected=$category_id_value }
+				  </select></div>
+						<div class="pricelableText"><strong>Price:</strong></div>
+						<div class="pricelable">$ <input name="price" 
+					id='price'	type="text" class="priceinputbox required" value="{$cost_item_value}" 
+						size="" /> (each)
+						</div>
+						<div class="clr"></div>
+						<div class="sellLabletext"><span>Please enter minimum quantity to get inventory alert notification.</span></div><br />
+						<div class="pricelableText"><strong>Minimum quantity:</strong></div>
+						<div class="pricelable">$ <input name="quantity" type="text" id='quantity'
+						class="priceinputbox required" value="{$inventory_alert_value}"  size="" /> It costs 20¢ (US) for each item 
+						</div>
+						<div class="clr"><input type='hidden' value='{$item_id_value}' name='item_id_value'></div>	
+						<div class="clr"></div>
+						<div class="sellLabletext"><input type='submit' value='submit' name='submit'   ></div><br />
+						<div class="pricelableText">&nbsp;</div>
+						<div class="pricelable">&nbsp;	</div>
+						<div class="clr"></div>	
+					</div>	
+					<!--End inside part -->
+				</div>
+				</div>
+				</form>
+				</div>
+
+				<div align="right"><a href="#"><img src="images/previous_btn.jpg" alt="" hspace="5" vspace="8px" border="0" /></a><a href="upload_imgage.html"><img src="images/next_btn.jpg" alt="" vspace="8" border="0" /></a></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--End Middle-->
+		{include file="footer.tpl"}

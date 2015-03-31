@@ -1,0 +1,155 @@
+{include file="header.tpl"}
+{include file="js_css_validation.tpl"}
+{include file="header_search.tpl"}
+		<!--End Logo-->
+		<!--Start Middle-->
+		<div id="middleMain">
+			<div id="mdlLftMain">
+				
+				{include file="left_category.tpl"}
+				
+			</div>
+		<!--Start Middle-->
+		<div id="middleMain">
+			
+			<div id="middleRtMain">
+				<div>
+				<div class="insidehd fl">Buyer</div>
+				<!--start page number -->
+				<div class="bradcrum"><a href="#" class="sel">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a> &nbsp;<strong><img src="images/d_pre_icon.jpg" alt="" /> Prev</strong> <a href="#" class="npLink"><strong>Next <img src="images/next_icon.jpg" alt="" /></strong></a></div>
+				<!--end page number -->
+				<div class="clear"></div>
+					<div class="buyermain">
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>    
+					<div class="clear"></div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>  
+					<div class="clear"></div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="buyerimgbox">
+						<a href="#"><img src="images/cat_smallimg.jpg" alt="" border="0" class="buyerimg"  /></a><br />
+						<div class="productNme"><a href="#">Product Name</a></div>
+						<div class="priceText">Price: <span>$43.00</span></div>
+						<div class="buynow"><a href="#"><img src="images/buy_bow_icon.jpg" alt="" border="0" /></a><a href="#"> Buy now</a></div>
+						<div class="detailfr"><a href="#"><img src="images/details_btn.jpg" alt="" border="0" /></a></div>
+						<div class="clear"></div>
+					  </div>
+					<div class="clear"></div>
+					</div>
+					<!--start page number -->
+					<div class="bradcrum"><a href="#" class="sel">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a> &nbsp;<strong><img src="images/d_pre_icon.jpg" alt="" /> Prev</strong> <a href="#" class="npLink"><strong>Next <img src="images/next_icon.jpg" alt="" /></strong></a></div>
+					<!--end page number -->
+					</div>
+			</div>	
+			<div class="clear"></div>
+		</div>
+		<!--End Middle-->
+		{include file="footer.tpl"}

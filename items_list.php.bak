@@ -1,0 +1,143 @@
+<?php
+include ('include/common.inc');
+include ('class/class.cms.inc');
+include ('class/class.mail.inc');
+include ('class/class.user.inc');
+include ('class/class.item.inc');
+include ('include/sendEmailClass.php');
+include ('captcha/php-captcha.php');
+//include ('include/Pagination.Class.php'); // For pagination
+//echo 'adm=='.ADMIN_PAGE_NUMBER;
+
+//create business class object
+$objCMS	= new Class_CMS();
+
+//create user class object
+$objUser = new Class_User();
+
+$objItem = new Class_Item();
+$item_values_list = array();
+$obj_item->seller_id = $_SESSION['session_user_id'];
+
+//$obj_item->update_item_id = $_REQUEST['item_id'];
+
+$image_details_item = $objItem->getItemImageDetails();
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Code for pagination START   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<#
+
+$pagination = new Pagination();
+
+if(!isset($_GET['pageNumber']))
+{
+	$pageNumber = 1;
+}
+else
+{
+	$pageNumber= $_GET['pageNumber'];
+}
+
+$num_rows_items     = mysql_num_rows($image_details_item);
+//number of records per page LIMIT
+if(isset($_GET['limit']) && is_numeric($_GET['limit']))
+{
+//5/25/2010$to	= 5;
+
+	$to	= trim($_GET['limit']);
+}
+else
+{
+	//$to	= 5;
+	$to	=	ADMIN_PAGE_NUMBER;
+}	
+$from=($pageNumber-1)*$to;
+$showPrevNext = true;
+//$url = "admin_category.php?start_date=$start_date&end_date=$end_date&business=$business";
+$url = basename($_SERVER['PHP_SELF'])."?";
+if($pageNumber==1 || $pageNumber=='')
+{
+	$counter=1;
+}
+else
+{
+	$counter = $pageNumber+$from-($pageNumber-1);
+}
+//echo '$counter'.$counter;
+$pageLimit =" LIMIT $from,$to";
+$pageLink = $pagination->getPageLinks($num_rows_items, $to, $url, $pageNumber, '', $showPrevNext);
+// Assigning Pagination Links
+$smarty->assign('pageLink',$pageLink);         
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Code for pagination END   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<#
+
+
+$objItem->pageLimit = $pageLimit;
+$obj_item->seller_id = $_SESSION['session_user_id'];
+
+//$obj_item->update_item_id = $_REQUEST['item_id'];
+
+$image_details_item1 = $objItem->getItemImageDetails();
+$num_rows_items1     = mysql_num_rows($image_details_item1);
+if($num_rows_items>0)
+{
+while($arr_items_array = mysql_fetch_array($image_details_item1))
+		{
+	     $item_values_list[]=   $arr_items_array;
+	
+		}
+}
+//echo $num_rows_items1;
+
+$page_counter = $pagination->getPageCounter($num_rows_items1);
+
+//if(isset($this->pageLimit) && $this->pageLimit!="")
+//		$sSQL .= $this->pageLimit;
+$smarty->assign('page_counter',$page_counter);
+
+$smarty->assign("users_items_details", $item_values_list);
+
+	/*
+	if(isset($resCMSRow['page_title']))
+	{
+		$page_title = $resCMSRow['page_title'];
+	}
+	else
+	{
+		$page_title = SITE_CONTACT;
+	}
+*/
+
+//get user details if user logged in
+	if(isset($_SESSION['session_user_id'])&& $_SESSION['session_user_id']!="")
+	{
+
+		$objUser->id = $_SESSION['session_user_id'];
+		$UserRes = $objUser->getUserLoginDetails();
+		$UserArr = mysql_fetch_array($UserRes);
+
+		//assign user details information
+		$smarty->assign("f_name",$UserArr['FirstName']);
+		$smarty->assign("l_name",$UserArr['LastName']);
+		$smarty->assign("contact_email",$UserArr['Email']);
+		$smarty->assign("phone",$UserArr['Phone']);
+	}
+
+
+
+
+
+
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+	
+	$smarty->assign("message",$message);
+	
+
+}
+//assign error/update message
+$smarty->assign("error_msg",$error_msg);
+$smarty->assign("update_msg",$update_msg);
+
+//display template
+$smarty->assign('site_page_title','My Items List');
+$smarty->assign('site_title',$site_title);
+$smarty->display('items_list.tpl');
+?>

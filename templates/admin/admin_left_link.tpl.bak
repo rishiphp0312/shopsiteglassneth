@@ -1,0 +1,123 @@
+<table width="200" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px">
+	<tr>
+		<td height="25" align="left" style="width:188px; padding-left:10px" class="bar">
+			<a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Open All</a> | <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Close All</a>		  
+		</td>
+	</tr>
+	<tr>
+		<td height="10" align="left" valign="top" bgcolor="#FFFFFF"></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" bgcolor="#FFFFFF" style="width:188px; padding-left:10px;padding-top:10px" class="border">
+			<ul id="treemenu1" class="treeview" style="margin-left:0; padding-left:0">
+			
+				<li><font class="subheading">Main Setting</font>
+					<ul>
+						<li><a href="admin_home.php" class="set_links">Admin Home</a></li>
+						<li><a href="admin_account.php" class="set_links">Admin Account</a></li>
+						<li><a href="admin_change_password.php" class="set_links">Change Password</a></li>
+						<li><a href="admin_logout.php" class="set_links">Logout</a></li>
+					</ul>
+				</li>
+				<li><font class="subheading">Category Management</font>
+					<ul>
+						<li><a href="admin_category.php" class="subheading">Manage Categories</a></li>
+						<li><a href="admin_add_category.php" class="subheading">Add Category</a></li>
+					</ul>
+				</li>
+				<li><font class="subheading">Member Management</font>
+					<ul>
+						<li><a href="admin_add_users.php" class="set_links">Add Member</a></li>
+						<li><a href="admin_users.php" class="set_links">Manage Members</a></li>
+						<li><a href="admin_send_bulk_mail.php" class="set_links">Send Email Notification</a></li>
+					</ul>
+				</li>
+				
+				<!--
+				<li><font class="subheading">Hotel Management</font>
+					<ul>
+						<li><font class="subsubheading">Hotel Management</font>
+							<ul>
+								<li><a href="add_hotel.php" class="set_links">Add Hotel</a></li>
+								<li><a href="manage_hotel.php" class="set_links">Manage Hotel</a></li>
+							</ul>
+						</li>
+						<li><font class="subsubheading">Category Management</font>
+							<ul>
+								<li><a href="add_category.php" class="set_links">Add Category</a></li>
+								<li><a href="manage_category.php" class="set_links">Manage Category</a></li>
+							</ul>
+						</li>
+						<li><font class="subsubheading">Region Management</font>
+							<ul>
+								<li><a href="add_region.php" class="set_links">Add Region</a></li>
+								<li><a href="manage_region.php" class="set_links">Manage Region</a></li>
+							</ul>
+						</li>
+						<li><font class="subsubheading">Amenities Management</font>
+							<ul>
+								<li><a href="add_amenities.php" class="set_links">Add Amenities</a></li>
+								<li><a href="manage_amenities.php" class="set_links">Manage Amenities</a></li>
+							</ul>
+						</li>
+						<li><font class="subsubheading">Room Type Management</font>
+							<ul>
+								<li><a href="add_room_type.php" class="set_links">Add Room Type</a></li>
+								<li><a href="manage_room_type.php" class="set_links">Manage Room Type</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				-->
+				
+				<li><font class="subheading">Product Management</font>
+					<ul>
+						<li><a href="#" class="subheading">Manage Products</a></li>
+						<!--<li><a href="admin_property_gallery.php" class="set_links">Property Gallery</a></li>-->
+						<li><a href="#" class="set_links">Featured Product</a></li>
+					</ul>
+				</li>
+				<li><font class="subheading">Content Management</font>
+					<ul>
+						<li><a href="add_cms.php" class="subheading">Add Static Pages</a></li>
+						<li><a href="admin_cms.php" class="subheading">Manage Static Pages</a></li>						
+					</ul>
+				</li>
+				<li><font class="subheading">Tutorial Management</font>
+					<ul>
+						<li><a href="#" class="subheading">Add Tutotial</a></li>
+						<li><a href="#" class="subheading">Manage Tutotial</a></li>						
+					</ul>
+				</li>
+				<li><font class="subheading">Home Page Sections</font>
+					<ul>
+						<li><a href="#" class="subheading">Featured Store</a></li>
+						<li><a href="#" class="subheading">Hand Picked Items</a></li>						
+					</ul>
+				</li>
+				<li><font class="subheading">Manage News Letter</font>
+					<ul>
+						<li><a href="admin_view_news_letter.php" class="subheading">Subscribed Users</a></li>
+						<li><a href="admin_send_news_letter.php" class="subheading">Send News Letter</a></li>						
+					</ul>
+				</li>
+				<li><font class="subheading">Manage Gift Cards</font>
+					<ul>
+						<li><a href="#" class="subheading">Gift Card List</a></li>
+						<li><a href="#" class="subheading">Gift Card Purchase History</a></li>						
+					</ul>
+				</li>
+				<li><font class="subheading">Blog Management</font>
+					<ul>
+						<li><a href="{$baseUrl}/blog/wp-login.php" class="subheading">Manage Blog</a></li>
+					</ul>
+				</li>
+				
+			</ul>
+			<script type="text/javascript">
+			//ddtreemenu.createTree(treeid, enablepersist, opt_persist_in_days (default is 1))
+			ddtreemenu.createTree("treemenu1", true);
+			</script>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,90 @@
+<?php
+include ("common_includes.php");
+include ("../class/class.category.inc");
+include ("../include/adminsession.php.inc");
+
+//create object of Category class
+$objCategory = new Class_Category();
+
+//assign static labels and heading
+$smarty->assign("form_heading","Add/Edit Category");
+$smarty->assign("return_link","admin_category.php");
+$smarty->assign("name_label","Category Name");
+$update_msg = "Category has been inserted successfully";
+
+//get parent categories to create drop down
+$parentID = array(0=>0);
+$parentNAME = array(0=>'Top Level');
+$parentRes = $objCategory->selectParentCatgeory();
+while($parentRow = mysql_fetch_array($parentRes))
+{
+	$parentID[] = $parentRow['category_id'];
+	$parentNAME[] = $parentRow['name'];
+}
+//print_r($parentNAME);
+$smarty->assign("parentID",$parentID);
+$smarty->assign("parentNAME",$parentNAME);
+ 
+//selects category for edit
+if(isset($_GET['id']) && $_GET['id']!="")
+{
+	$objCategory->category_id = trim($_GET['id']);
+	$objResCat		= $objCategory->selectCatgeory();
+	$CateRow		= mysql_fetch_array($objResCat);
+	$parent_id		= $CateRow ['parent_id'];
+	$name			= $CateRow ['name'];
+	$description	= $CateRow ['description'];
+	$status			= $CateRow ['status'];
+}
+//submit form
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+	//get ID
+	if(isset($_GET['id']) && $_GET['id']!="")
+	{
+		$objCategory->category_id = trim($_GET['id']);
+		$update_msg = "Category has been updated successfully"; 
+	}
+	
+	//Post Variable		
+	extract($_POST);
+	$objCategory->parent_id 	= rteSafe($parent_id);
+	$objCategory->name 			= rteSafe($name);
+	$objCategory->description 	= rteSafe($description);
+	if(isset($_POST['status']) && $_POST['status']!="")
+	{
+		$status = 1; 
+	}
+	else
+	{
+		$status = 0; 
+	}
+	$objCategory->status 		= $status;
+	
+	//check name for duplicate
+	if(!$objCategory->validateExisringName())
+	{
+		$objDBReturn = $objCategory->insertUpdateCatgeory();
+		if($objDBReturn->nErrorCode==0)
+		{
+			success_msg($update_msg);
+		}
+	}
+	else
+	{
+		failure_msg("This category name already exists!");
+	}
+	redirect("admin_category.php");
+}
+
+//assign post/edit variables
+$smarty->assign('parent_id',$parent_id);
+$smarty->assign('name',$name);
+$smarty->assign('description',$description);
+$smarty->assign('status',$status);	
+			
+//display template and title
+$smarty->assign('site_page_title',ADMIN_COMMON_TITLE);
+$smarty->assign('site_title',$site_title);
+$smarty->display('admin_add_category.tpl');	
+?>

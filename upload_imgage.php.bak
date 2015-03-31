@@ -1,0 +1,292 @@
+<?php
+include ('include/common.inc');
+include ('class/class.cms.inc');
+include ('class/class.mail.inc');
+include ('class/class.user.inc');
+include ('class/class.item.inc');
+include ('include/sendEmailClass.php');
+include ('captcha/php-captcha.php');
+include ('create_thumbs.php');
+
+$item_id_value = $_REQUEST['item_id_value'];
+
+//echo 'last-'.$last_item_id = $_SESSION['Last_id_row'];
+
+
+$objCMS	= new Class_CMS();
+//create user class object
+$objUser = new Class_User();
+
+//create item class object
+
+		$objItem 	= new Class_Item();
+		if($item_id_value=='')
+		$objItem->update_item_id = $_SESSION['Last_id_row'];
+		else
+		$objItem->update_item_id = $item_id_value;
+
+//		echo 'obg--'.$objItem->update_item_id;
+
+		$objItem->seller_id=$_SESSION['session_user_id'];
+		$odj_image_details_value  = $objItem->getItemImageDetails();
+		$num_fetched_values = mysql_num_rows($odj_image_details_value); 
+if($num_fetched_values>0)
+{
+     $fetched_values     = mysql_fetch_array($odj_image_details_value);
+		
+	 $arr_fetch_names1        = $fetched_values['image1'];
+	 $arr_fetch_names2        = $fetched_values['image2'];
+	 $arr_fetch_names3        = $fetched_values['image3'];
+	 $arr_fetch_names4        = $fetched_values['image4'];
+	 $arr_fetch_names5        = $fetched_values['image5'];
+	
+	   
+
+}
+//$rand_value = rand();
+$img1= $arr_fetch_names1;
+    $smarty->assign('showimage1', $img1 );
+	$smarty->assign('showimage2', $arr_fetch_names2 );
+	$smarty->assign('showimage3', $arr_fetch_names3 );
+	$smarty->assign('showimage4', $arr_fetch_names4 );
+	$smarty->assign('showimage5', $arr_fetch_names5 );
+	
+//create mail class object
+$objMail 	= new Class_Mail();
+
+// Creating object of SendEmailClass
+$emailObj 	= new SendEmailClass;
+
+//get page details
+//$page_title = trim($_GET['page']);
+$page_link_id = "contact_us";
+
+if($page_link_id && $page_link_id!="")
+{
+	$objCMS->page_link_id = $page_link_id;
+	$resCMS = $objCMS->selectCmsPage();
+	$resCMSRow = mysql_fetch_array($resCMS);
+	
+	$smarty->assign('page_title',$resCMSRow['page_title']);
+	$smarty->assign('description',$resCMSRow['description']);
+	$smarty->assign('posttime',$resCMSRow['posttime']);
+	
+}
+if(isset($resCMSRow['page_title']))
+{
+	$page_title = $resCMSRow['page_title'];
+}
+else
+{
+	$page_title = SITE_CONTACT;
+}
+
+//get user details if user logged in
+if(isset($_SESSION['session_user_id'])&& $_SESSION['session_user_id']!="")
+{
+
+	$objUser->id = $_SESSION['session_user_id'];
+	$UserRes = $objUser->getUserLoginDetails();
+	$UserArr = mysql_fetch_array($UserRes);
+
+	//assign user details information
+	$smarty->assign("f_name",$UserArr['FirstName']);
+ 	$smarty->assign("l_name",$UserArr['LastName']);
+ 	$smarty->assign("contact_email",$UserArr['Email']);
+	$smarty->assign("phone",$UserArr['Phone']);
+}
+
+
+
+	
+
+//replace message content with mail template message conyent variable
+$mail_content			= str_replace("#message_content#",$message_content,$mail_content);
+$mail_content			= str_replace("#link#",$baseUrl,$mail_content);
+
+
+
+//send and login details email to user
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+	//print_r($_POST);
+	
+	extract($_POST);
+	//print_r($_FILES);
+	//exit;
+if($removeimage1!='' && $_FILES['upload_img_1']['tmp_name']!='' )
+	{
+@unlink("uploads/".$removeimage1);
+@unlink("uploads/thumbs/".$removeimage1);
+	}
+	if($removeimage2!=''  && $_FILES['upload_img_2']['tmp_name']!='' )
+	{
+@unlink("uploads/".$removeimage2);
+@unlink("uploads/thumbs/".$removeimage2);
+	}
+	if($removeimage3!=''  && $_FILES['upload_img_3']['tmp_name']!='' )
+	{
+@unlink("uploads/".$removeimage3);
+@unlink("uploads/thumbs/".$removeimage3);
+	}
+	if($removeimage4!=''  && $_FILES['upload_img_4']['tmp_name']!='' )
+	{
+@unlink("uploads/".$removeimage4);
+@unlink("uploads/thumbs/".$removeimage4);
+	}
+	if($removeimage5!=''  && $_FILES['upload_img_5']['tmp_name']!='' )
+	{
+@unlink("uploads/".$removeimage5);
+@unlink("uploads/thumbs/".$removeimage5);
+	}
+	
+//$POST_MAX_SIZE = ini_get('post_max_size');
+
+	$POST_MAX_SIZE = '2M';
+// $_SERVER['CONTENT_LENGTH'];
+
+$mul = substr($POST_MAX_SIZE, -1);
+///echo '<br>';
+$mul = ($mul == 'M' ? 1048576 : ($mul == 'K' ? 1024 : ($mul == 'G' ? 1073741824 : 1)));
+
+
+if ($_SERVER['CONTENT_LENGTH'] > $mul*(int)$POST_MAX_SIZE ) 
+	$error = 'true';
+else
+	$error = 'false';
+ $error ;
+
+
+if($error=='true')
+	{
+    failure_msg("Error occured filsize cannot be ");
+	redirect('upload_imgage.php');
+}
+
+for($i=1;$i<6;$i++)
+	{
+if($_FILES['upload_img_'.$i]['tmp_name']!='')
+		{
+if($_FILES['upload_img_'.$i]['type']=='image/jpeg' || $_FILES['upload_img_'.$i]['type']=='image/png'  || $_FILES['upload_img_'.$i]['type']=='image/gif' )
+		  {
+	
+	      }
+	else
+		   {
+		$type_error = 1;
+		  } // end else
+		} // end if 
+} // end of for loop
+
+if($type_error==1)
+	{
+ failure_msg("Error occured file extension should  be .jpg or .gif or .png  ");
+	redirect('upload_imgage.php');
+}
+
+	
+	$error_msg = "";
+	
+	//assign post values
+	$smarty->assign("f_name",$f_name);
+	$smarty->assign("l_name",$l_name);
+	$smarty->assign("phone",$phone);
+	$smarty->assign("contact_email",$contact_email);
+	$smarty->assign("contact",$contact);
+	$smarty->assign("message",$message);
+	
+	
+	//if no errors found
+		if($error_msg=="") 
+		{
+		for($i=1;$i<6;$i++)
+	{
+if($_FILES['upload_img_'.$i]['tmp_name']!='' )
+		{
+		$tmp_name_file      = $_FILES['upload_img_'.$i]['tmp_name'];
+		$file_name          = basename($_FILES['upload_img_'.$i]['name']);
+		$file_ext           = explode(".",$file_name);
+		$file_ext_len       = count($file_ext);
+		$file_ext_value     =  $file_ext[$file_ext_len-1];
+		$file_name_with_ext = time().'-'.$i.'.'.$file_ext_value;
+		$flg            = move_uploaded_file($tmp_name_file,'uploads/'.$file_name_with_ext);
+
+			if($flg==1)
+					{
+				$namesof_files[]  = $file_name_with_ext;
+				createThumbs1($file_name_with_ext,"uploads/thumbs/","100");
+	            $sucess_value=1;
+     					}
+			else
+					{
+				$sucess_value=2;;
+			
+					}
+
+
+	  }// end of if
+   } // end of for loop
+	if($sucess_value==1)
+		{
+
+		$objItem->image1=$namesof_files[0];
+		$objItem->image2=$namesof_files[1];
+		$objItem->image3=$namesof_files[2];
+		$objItem->image4=$namesof_files[3];
+		$objItem->image5=$namesof_files[4];
+		
+		if($item_id_value=='')
+		$objItem->update_item_id = $_SESSION['Last_id_row'];
+		else
+		$objItem->update_item_id = $item_id_value;
+
+//echo 'obj-final'.$objItem->update_item_id ;
+//exit;
+		if($error_msg=="")
+	     {
+
+		 $objDBReturn = $objItem->insertUpdateImage();
+		
+		if($objDBReturn->nErrorCode==0)
+		    {
+        success_msg("Your images are uploaded successfully!!");
+		if($item_id_value=='')
+		redirect('upload_imgage.php');
+		else
+		redirect('upload_imgage.php?item_id_value='.$item_id_value);
+		    }
+		
+	     }
+
+        
+
+	
+	
+    	}
+	else
+		{
+		
+			
+		failure_msg("Error occured file not uploaded!!  ");
+		if($item_id_value=='')
+		redirect('upload_imgage.php');
+		else
+		redirect('upload_imgage.php?item_id_value='.$item_id_value);
+		}
+		
+
+	}// end of error message
+	//end of if($error_msg=="")
+}
+// createThumbs1("1274428329-1.jpg","uploads/thumbs/","100");
+//assign error/update message
+
+$smarty->assign("error_msg",$error_msg);
+$smarty->assign("update_msg",$update_msg);
+$smarty->assign("item_id_value",$item_id_value);
+
+//display template
+$smarty->assign('site_page_title','Sell an Item');
+$smarty->assign('site_title',$site_title);
+$smarty->display('upload_imgage.tpl');
+?>

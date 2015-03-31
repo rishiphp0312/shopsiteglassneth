@@ -1,0 +1,46 @@
+{include file="header.tpl"}
+{include file="js_css_validation.tpl"}
+{include file="header_search.tpl"}
+		<!--End Logo-->
+		<!--Start Middle-->
+		<div id="middleMain">
+			
+				
+				{include file="left_category.tpl"}
+				
+			
+		<!--Start Middle-->
+		
+			<div id="middleRtMain">
+				<div class="shopmain">
+				<span class="mainHD">Shop Policies</span><a href="#">Click here</a> to see how your public Shop Policies page looks.<br /><br />
+					<!--Start inside part -->
+					<div class="sellItemmian">
+						You may provide shop policies to help your customers make a more informed purchase. Etsy encourages all sellers to post shop policies. Before writing your own policies, be sure to familiarize yourself with Etsy's policies: The DOs and DON'Ts and Terms of Use. Your shop policies must not contradict Etsy's site-wide policies.<br /><br />
+						We have listed examples of common policy considerations for each category below. For ideas on writing shop policies, see this Storque article.<br /><br />
+						<div class="sellLabletext"><span>Welcome</span><br />
+						General information, philosophy, etc.</div>
+						<div class="selllablefield"><textarea name="" cols="" rows="" class="textfield"></textarea></div>
+						<div class="sellLabletext"><span>Payment</span><br />
+						Methods, terms, deadlines, taxes, cancellation policy, etc.</div>
+						<div class="selllablefield"><textarea name="" cols="" rows="" class="textfield"></textarea></div>		
+						<div class="sellLabletext"><span>Shipping</span><br />
+						Methods, upgrades, deadlines, insurance, confirmation, international customs, etc.</div>
+						<div class="selllablefield"><textarea name="" cols="" rows="" class="textfield"></textarea></div>	
+						<div class="sellLabletext"><span>Refunds and Exchanges</span><br />
+						Terms, eligible items, damages, losses, etc.</div>
+						<div class="selllablefield"><textarea name="" cols="" rows="" class="textfield"></textarea></div>	
+						<div class="sellLabletext"><span>Additional Information</span><br />
+						Additional policies, FAQs, Alchemy &amp; custom orders, wholesale &amp; consignment, guarantees, etc.</div>
+						<div class="selllablefield"><textarea name="" cols="" rows="" class="textfield"></textarea></div>	
+						<div><a href="#"><img src="images/submit_btn.jpg" alt="" border="0" vspace="5" /></a></div>
+					</div>	
+					<!--End inside part -->
+				</div>
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--End Middle-->
+		
+	{include file="footer.tpl"}

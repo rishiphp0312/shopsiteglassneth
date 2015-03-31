@@ -1,0 +1,32 @@
+<?php
+ob_start();
+//include all common fils here
+//include ('../include/admin_smartyInit.php.inc'); 
+include('../smarty/libs/admin_Smarty.class.php');//smarty object
+$smarty = new Smarty;
+include ('../include/constants.php.inc'); // constant 
+include ('../class/dbconnector.inc'); //DB connection file
+include ('../fckeditor/SP_replace.php'); // FCK editor
+include ('../include/functions.php'); //common functions
+include ('../include/Pagination.Class.php'); // For pagination
+//include ('../include/country_state_cat.php'); // For country, state and city etc
+include ('../class/class.dynamic.php'); //display dynamic content from template
+include ('../class/class.mail.inc'); //email template class
+include ('../include/sendEmailClass.php'); //send email class
+
+//create object of dynamic class
+$objDynamic = new Class_Dynamic();
+$smarty->assign("objDynamic",$objDynamic);
+
+//set success/failure messages
+if(isset($_SESSION['SUCCESS_MESSAGE']))
+{
+	$smarty->assign('SUCCESS_MESSAGE',$_SESSION['SUCCESS_MESSAGE']);
+	unset($_SESSION['SUCCESS_MESSAGE']);
+}
+if(isset($_SESSION['ERROR_MESSAGE']))
+{
+	$smarty->assign('ERROR_MESSAGE',$_SESSION['ERROR_MESSAGE']);
+	unset($_SESSION['ERROR_MESSAGE']);
+}
+?>

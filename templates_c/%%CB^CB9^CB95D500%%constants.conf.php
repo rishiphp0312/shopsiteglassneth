@@ -1,0 +1,16 @@
+<?php $_config_vars = array (
+  'require_msg' => 'Required fields are indicated with an asterisk(*)',
+  'site_title' => 'Kauai Property',
+  'home_title' => 'Home',
+  'login_title' => 'User Login',
+  'about_us_title' => 'About Us',
+  'contact_us' => 'Contact Us',
+  'advertise_us' => 'Advertise With Kauai Properties',
+  'buyer_title' => 'Buyer',
+  'call_number' => '808 645-0698',
+  'call_now_number' => '(808) 645-0698',
+  'msg_id_1' => 'Map View',
+  'msg_id_2' => 'List View',
+  'msg_id_3' => 'Detail View',
+  'msg_id_4' => 'Thumbnail View',
+); ?>

@@ -1,0 +1,37 @@
+{include file="header.tpl"}
+{include file="js_css_validation.tpl"}
+{include file="header_search.tpl"}
+<!--Start Middle-->
+	<div id="middleMain">
+			{include file="left_category.tpl"}
+		<div id="middleRtMain">
+			<div class="registerBg">
+				<div class="registerSUbHd">Change Email <div class="reqField">*required</div></div>
+				<form id="frmChangeemail" name="frmChangeemail" method="post">
+					<input type="hidden" name="existing_password" id="existing_password" value="{$UserArr.password}" />
+					<table width="100%" border="0" cellspacing="0" cellpadding="4">
+					<tr><td colspan="4">{include file='error_msg_template.tpl'}</td></tr>
+					<tr>
+					  <td width="29%" align="left" valign="top" class="text">Change Email: <span class="redClr">*</span></td>
+					  <td width="1%">&nbsp;</td>
+					  <td width="33%"><input name="Email" id="Email" class="formInput required email" 
+					  value="{$UserArr.email}" type="text"   /></td>
+					  <td width="37%">&nbsp;</td>
+					</tr>
+					
+					<tr>
+					  <td>&nbsp;</td>
+					  <td>&nbsp;</td>
+					  <td colspan="2">
+					  <input name="change_email" type="submit" value="Change Email" class="button" /> 
+					  <input name="cancel" type="button" value="Cancel" class="button" onclick="window.location='my_account.php';" />
+					  </td>
+					</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+<!--End Middle-->
+{include file="footer.tpl"}

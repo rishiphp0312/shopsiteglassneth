@@ -1,0 +1,91 @@
+{include file="header.tpl"}
+{include file="js_css_validation.tpl"}
+{include file="header_search.tpl"}
+		<!--End Logo-->
+		<!--Start Middle-->
+		<div id="middleMain">
+			
+				
+				{include file="left_category.tpl"}
+				
+			
+			<div id="middleRtMain">
+				<div class="shopmain">
+				<span class="mainHD" >My Items</span>
+					<!--Start inside part -->
+					<div class="deshboardmmian">
+ {if $users_items_details}
+					
+					<div class="deshimgmin" style='width:600px;'>
+							<div class="deshimgfl"  style='width:300px;font-weight:600;color:#000000;font-size:16px;' >Items</div>
+							<div class="deshimgfrtext" style='width:250px;font-weight:600;color:#000000;font-size:16px;'  >
+							Title</div>
+							<div class="clear"></div>
+						</div>
+						
+						{foreach name=cat from=$users_items_details item=val_items}
+					
+					
+				
+						<div class="deshimgmin" style='width:600px;'>
+							<div class="deshimgfl"  style='width:25px;'>
+
+			{if $smarty.request.pageNumber!="" && $smarty.request.pageNumber>1}
+		  {assign var=pageconut value=$smarty.request.pageNumber-1}
+		  {$smarty.const.ADMIN_PAGE_NUMBER*$pageconut+$smarty.foreach.cat.iteration}.
+		  {else}
+		  {$smarty.foreach.cat.iteration}.
+		  {/if}
+							</div>
+							<div class="deshimgfl"  style='width:300px;' ><a href="#" class="imgbox">
+							
+		<img src="{if $val_items.image1!=''}uploads/thumbs/{$val_items.image1}{else}images/no_img.jpg{/if}" 
+		alt="" height='50'  border='0' width="{if $val_items.image1!=''}100{else}''{/if}"  />
+							</a></div>
+							<div class="deshimgfrtext" style='width:250px;' >
+							<div style='width:180px;float:left;'>
+							<a href="sell-an-item.php?item_id_value={$val_items.item_id}">
+							{$val_items.title|ucfirst}</a>&nbsp;&nbsp;&nbsp;</div>
+							<div style='width:50px;float:left;'><a href='#'> Details</a></div>
+							</div>
+							<div class="clear"></div>
+
+						</div>
+						
+					
+					<div class="clear"></div>
+						
+						{/foreach}
+						<div class="deshimgmin" style='width:600px;float:left;'>
+						{$page_counter} records&nbsp;&nbsp;&nbsp;&nbsp;
+						<span style="float:right;" class="admn_pagination_msg_board">{$pageLink}</span>
+				</div>
+
+						{else}
+						<div class="deshimgmin" style='width:600px;' >
+<div style='width:600px;text-align:center;font-family:"Times New Roman",Georgia,Serif;font-size:16px;color:red;' class="deshimgfl">No records found !!
+							
+		</div>
+							
+							<div class="clear"></div>
+						</div>
+						{/if}
+						<div class="deshimgmin">
+							<div class="deshimgfl">&nbsp;
+							</div>
+							<div class="deshimgfrtext">&nbsp;</div>
+							<div class="clear"></div>
+						</div>
+						
+					<div class="clear"></div>
+				
+
+					</div>	
+					<!--End inside part -->
+				</div>
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--End Middle-->
+{include file="footer.tpl"}

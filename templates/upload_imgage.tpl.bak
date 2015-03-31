@@ -1,0 +1,62 @@
+{include file="header.tpl"}
+{include file="js_css_validation.tpl"}
+{include file="header_search.tpl"}
+		<!--End Logo-->
+		<!--Start Middle-->
+		<div id="middleMain">
+			
+				
+				{include file="left_category.tpl"}
+		
+		<!--Start Middle-->
+		<div id="middleMain">
+			
+			<div id="middleRtMain">
+				<div>
+				<span class="mainHD">Sell an Item</span>
+					<!--start top tab-->
+					<div>
+						<span class="selItemtabinactive"><a href='{$baseUrl}sell-an-item.php{if $item_id_value!=''}?item_id_value={$item_id_value}{/if}'>Item Details</a> </span>
+						<span class="selItemtabinactive" ><a href='{$baseUrl}upload_imgage.php{if $item_id_value!=''}?item_id_value={$item_id_value}{/if}'>Upload Images</a> </span>
+						<span class="selItemtabative"><a href='#{$baseUrl}review-post.php'>Review &amp; Post</a> </span>
+						<div class="clear"></div>
+					</div>
+					<!--End top tab-->
+					<!--Start inside part -->
+					<div class="sellItemmian">
+						<!--Start find image -->
+				<form name='frm_img_upload' action='' method='post' enctype='multipart/form-data'>						<div class="uploadhd"><strong>Upload Images</strong><input type='hidden' value='{$item_id_value}' name='item_id_value'></div>
+						Use .jpg, .gif or .png files no larger than 2MB.
+Images around 1,000 pixels wide work best.<br /><br />
+						<div class="browsbsection"><input name="upload_img_1" type="file" class="browsbtn" /><input type='hidden' name='removeimage1' value='{$showimage1}'></div>
+						<div class="browsbsection"><input name="upload_img_2" type="file" class="browsbtn" /><input type='hidden' name='removeimage2' value='{$showimage2}'></div>
+						<div class="browsbsection"><input name="upload_img_3" type="file" class="browsbtn" /><input type='hidden' name='removeimage3' value='{$showimage3}'></div>
+						<div class="browsbsection"><input name="upload_img_4" type="file" class="browsbtn" /><input type='hidden' name='removeimage4' value='{$showimage4}'></div>
+						<div class="browsbsection"><input name="upload_img_5" type="file" class="browsbtn" /><input type='hidden' name='removeimage5' value='{$showimage5}'></div>
+						<!--End find image -->	
+						<div class="uploadhd"><strong>Upload.</strong></div>	
+						<input name="text" type="submit" value="Upload" class="browsbtn"  />
+					</form>
+						<!--start your image -->
+						<div class="uploadhd"><strong>Your Images</strong></div>
+						<div class="yourImbmain">
+							<div class="yourImgbox"><img src="{if $showimage1!=''} uploads/thumbs/{$showimage1}{else}images/no_img.jpg{/if}"  alt="" height='50'  class="yourImg"/></div>
+							<div class="yourImgbox"><img src="{if $showimage2!=''} uploads/thumbs/{$showimage2}{else}images/no_img.jpg{/if}"  height='50'  alt=""  class="yourImg"/></div>
+							<div class="yourImgbox"><img src="{if $showimage3!=''} uploads/thumbs/{$showimage3}{else}images/no_img.jpg{/if}"  height='50' alt=""  class="yourImg"/></div>
+							<div class="yourImgbox"><img src="{if $showimage4!=''} uploads/thumbs/{$showimage4}{else}images/no_img.jpg{/if}"  height='50' alt=""  class="yourImg"/></div>
+							<div class="yourImgbox"><img src="{if $showimage5!=''} uploads/thumbs/{$showimage5}{else}images/no_img.jpg{/if}"    height='50'alt=""  class="yourImg"/></div>
+							
+							<div class="clear"></div>
+						</div>
+						<!--end your image -->	
+					</div>	
+					<!--End inside part -->
+				</div>
+				<div align="right"><a href="sell-an-item.html">
+				<img src="images/previous_btn.jpg" alt="" hspace="5" vspace="8px" border="0" />
+				</a><a href="review-post.html"><img src="images/next_btn.jpg" alt="" vspace="8" border="0" /></a></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--End Middle-->
+		{include file="footer.tpl"}

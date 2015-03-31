@@ -1,0 +1,132 @@
+{include file="admin_top.tpl"}
+<script language="javascript">
+{literal}
+function confirm_msg(id)
+{
+	jConfirm('Do you really want to delete this user?', 'Confirm', function(r) 
+	{
+		if(r)
+		{
+			location.href='admin_users.php?delete='+id;
+		}
+		else
+		{
+			return false;
+		}	
+	});
+}
+{/literal}
+</script>
+<table width="100%"  border="0" cellspacing="10" cellpadding="5">
+	<tr>
+	  <td valign="middle" class="bar">{$form_heading}</td>
+	</tr>
+	<tr><td align="left" valign="top" class="border1">
+	<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#D5F1FF">
+		<form action="" method="get">
+		  <tr class="c3">
+			<td colspan="4" class="subheading">Member  Search</td>
+		  </tr>
+		  <tr class="c2">
+			<td bgcolor="#FFFFFF">By First Name:</td>
+			<td bgcolor="#FFFFFF"><input name="FirstName" type="text" id="keywords" class="input" value="{$FirstName}" /></td>
+			<td bgcolor="#FFFFFF">By Last Name:</td>
+			<td bgcolor="#FFFFFF"><input name="LastName" type="text" id="keywords" class="input" value="{$LastName}" /></td>
+			<td bgcolor="#FFFFFF"><input type='radio' value='4' name='user_type' {$user_type_assign_buyer} user_type_assign_seller >Buyer&nbsp;
+			<input type='radio' value='3' name='user_type' {$user_type_assign_seller}>Seller</td>
+		  </tr>
+		  <tr class="c1">
+			<td bgcolor="#FFFFFF">By Email:</td>
+			<td width="19%" bgcolor="#FFFFFF"><input name="Email" type="text" id="Email" class="input" value="{$Email}" /></td>
+			<td bgcolor="#FFFFFF">Status</td>
+			<td bgcolor="#FFFFFF"><input type="radio" name="status" value="Y" {$chkActive}> Active <input type="radio" name="status" value="N" {$chkInActive}> InActive <input type="radio" name="status" value="YN" {$chkBoth}> Both</td>
+			<td bgcolor="#FFFFFF"><input name="form_member_search" type="submit" id="form_member_search" class="button" value="Search" />
+			&nbsp; <input type="button" class="button" name="reset" value="Clear Search" onclick="window.location='admin_users.php';" /></td>
+		  </tr>
+		</form>
+	  </table>
+	</td>
+	</tr>
+	<tr>
+	<td align="right">
+	<div style="float:left;">{$page_counter} Users</div> 
+	<input type="button" name="mail_all_users" value="Send Notification Email" class="button" onclick="window.location='admin_send_bulk_mail.php';" />
+	 {if $usersList}
+	 <!--<input type="button" name="btnExport" value="Export Users" class="button" onclick="window.location='admin_export_users.php?{$smarty.server.QUERY_STRING}';" />
+	 -->{/if}
+	</td>
+	</tr>	
+	<tr>
+	  <td align="left" valign="top" class="border1">
+      <table width="100%" cellpadding="4" cellspacing="2" align="center">
+       {if $usersList}
+		<tr class="listHeadRow">
+          <td>S. No.</td>
+          <td>Username</td>
+		  <td>Email</td>
+		  <td>User Type</td>
+		  <td>Registration Date</td>
+          <td>Status</td>
+		  <td>Options</td>
+		</tr>
+		{foreach name=users from=$usersList item=user}
+		<tr bgcolor="{cycle values='#f5f5f5,#e6e6e6'}">
+          <td>
+		  {if $smarty.request.pageNumber!="" && $smarty.request.pageNumber>1}
+		  {assign var=pageconut value=$smarty.request.pageNumber-1}
+		  {$smarty.const.ADMIN_PAGE_NUMBER*$pageconut+$smarty.foreach.users.iteration}.
+		  {else}
+		  {$smarty.foreach.users.iteration}.
+		  {/if}
+		  </td>
+          <td>
+		  <a href="admin_add_users.php?user_id={$user.id}&user_type={$user.user_type}" title="View Details" style="font-weight:normal;">
+		  {$user.username}
+		  </a>
+		  </td>
+		  <td>{$user.email}</td>
+		  <td>{$userTypeArr[$user.user_type]}</td>
+		  <td>{$user.reg_date|date_format:"%b %d, %Y"}</td>
+          <td>
+		  {if $user.status==1}
+		  <a href="javascript: void(0);" title="De-Activate It" style="text-decoration:none;" onclick="changeUserStatus(0,{$user.id},'{$smarty.server.PHP_SELF|basename}');">De-Activate</a>
+		  {else}
+		  <a href="javascript: void(0);" title="Activate It" style="text-decoration:none;" onclick="changeUserStatus(1,{$user.id},'{$smarty.server.PHP_SELF|basename}');">Activate</a>
+		  {/if}
+		  </td>
+		  <td>
+			  <a href="admin_add_users.php?user_id={$user.id}&user_type={$user.user_type}" style="text-decoration:none;" title="Edit">
+			  	<img src="{$baseUrl}/images/edit_icon.png" alt="Edit" border="0" />
+			  </a>
+			   &nbsp;
+			  {if $user.isdeleted==1}
+			  <a href="javascript: void(0);" title="Restore" style="text-decoration:none;" onclick="changeDeleteStatus(0,{$user.id},'{$smarty.server.PHP_SELF|basename}');">
+			  	<img src="{$baseUrl}/images/restore.png" alt="Restore" border="0" /></a>
+			  {else}
+			  <a href="javascript: void(0);" title="Delete" style="text-decoration:none;" onclick="changeDeleteStatus(1,{$user.id},'{$smarty.server.PHP_SELF|basename}');">
+			  	<img src="{$baseUrl}/images/dlt_icon.png" alt="Delete" border="0" /></a>
+			  {/if}
+			<!--  <a href="admin_user_login.php?user_id={$user.id}" style="text-decoration:none;" title="Logged in as this user" target="_blank">
+			  <img src="{$baseUrl}/images/user_icon.png" alt="Logged in as this user" height="25" width="25" border="0" />
+			  </a>-->
+		</td>
+		</tr>
+		{/foreach}
+        <tr>
+			<td colspan="8">
+			<div style="float:left;">{$page_counter} Users</div>
+			 {if $pageLink}
+			<div class="admn_pagination_msg_board">
+			<span style="float:right;">{$pageLink}</span>
+			</div>
+			 {/if}
+			</td>
+        </tr>
+		{else}
+		<tr><td colspan="8"><div class="no_record_found">No record found...!</div></td></tr>
+		{/if}
+      </table>
+</td>
+	</tr>
+</table>	  
+{include file="admin_bottom.tpl"} 
